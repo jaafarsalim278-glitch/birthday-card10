@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد يا قمري 🌙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050510;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Amiri', 'Reem Kufi', serif;
+            overflow-x: hidden;
+        }
+
+        .card-container {
+            max-width: 520px;
+            width: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 100px rgba(230,200,122,0.1);
+            background: #0a0a1a;
+            position: relative;
+            animation: cardAppear 1.5s ease-out;
+        }
+
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .stars-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .moon {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff8dc, #e6c87a, #c9a84c);
+            box-shadow: 0 0 50px rgba(230, 200, 122, 0.6), 0 0 100px rgba(230, 200, 122, 0.3);
+            z-index: 1;
+            animation: moonGlow 4s infinite ease-in-out alternate;
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 50px rgba(230,200,122,0.5), 0 0 100px rgba(230,200,122,0.2); }
+            100% { box-shadow: 0 0 70px rgba(230,200,122,0.8), 0 0 140px rgba(230,200,122,0.4); }
+        }
+
+        .moon-crater {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(180, 160, 100, 0.3);
+        }
+
+        .header-section {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 110px 20px 35px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .header-section h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 32px;
+            color: #e6c87a;
+            text-shadow: 0 0 25px rgba(230,200,122,0.5);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .header-section .subtitle {
+            font-size: 20px;
+            color: #b8a8d8;
+            font-style: italic;
+        }
+
+        .poem-section {
+            position: relative;
+            z-index: 2;
+            padding: 25px 35px 35px;
+            text-align: center;
+        }
+
+        .poem-text {
+            font-family: 'Amiri', serif;
+            font-size: 17px;
+            line-height: 2.6;
+            color: #e0d8f0;
+            text-shadow: 0 0 10px rgba(200,180,255,0.2);
+            white-space: pre-line;
+        }
+
+        .poem-text .highlight {
+            color: #e6c87a;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(230,200,122,0.6);
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 120px;
+            height: 2px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: shoot 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(-120px) translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(500px) translateY(250px); opacity: 0; }
+        }
+
+        .audio-section {
+            position: relative;
+            z-index: 2;
+            padding: 0 30px 35px;
+            text-align: center;
+        }
+
+        .audio-btn {
+            background: rgba(230, 200, 122, 0.15);
+            border: 2px solid #e6c87a;
+            color: #e6c87a;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            outline: none;
+        }
+
+        .audio-btn:hover {
+            background: rgba(230, 200, 122, 0.3);
+            box-shadow: 0 0 35px rgba(230,200,122,0.3);
+            transform: scale(1.05);
+        }
+
+        .audio-btn.playing {
+            background: rgba(230, 200, 122, 0.3);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(230,200,122,0.3); }
+            50% { box-shadow: 0 0 45px rgba(230,200,122,0.6); }
+        }
+
+        .footer-section {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px 35px;
+        }
+
+        .footer-section p {
+            color: #8a7ab0;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .planet-1 {
+            width: 45px;
+            height: 45px;
+            bottom: 90px;
+            left: 25px;
+            background: radial-gradient(circle at 30% 30%, #ff6b9d, #c44569);
+            box-shadow: 0 0 25px rgba(196,69,105,0.4);
+        }
+
+        .planet-2 {
+            width: 28px;
+            height: 28px;
+            top: 160px;
+            left: 35px;
+            background: radial-gradient(circle at 30% 30%, #74b9ff, #0984e3);
+            box-shadow: 0 0 18px rgba(116,185,255,0.4);
+            animation-delay: -2s;
+        }
+
+        .planet-3 {
+            width: 20px;
+            height: 20px;
+            bottom: 220px;
+            right: 30px;
+            background: radial-gradient(circle at 30% 30%, #a29bfe, #6c5ce7);
+            box-shadow: 0 0 14px rgba(162,155,254,0.4);
+            animation-delay: -4s;
+        }
+
+        .heart-float {
+            position: absolute;
+            color: #e6c87a;
+            font-size: 22px;
+            animation: heartFloat 4s infinite ease-in-out;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.8; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .header-section h1 { font-size: 24px; }
+            .poem-text { font-size: 15px; }
+            .moon { width: 70px; height: 70px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container" id="card">
+        <div class="stars-bg" id="stars"></div>
+
+        <div class="moon">
+            <div class="moon-crater" style="width:17px;height:17px;top:17px;left:20px;"></div>
+            <div class="moon-crater" style="width:11px;height:11px;top:45px;left:50px;"></div>
+            <div class="moon-crater" style="width:9px;height:9px;top:33px;left:14px;"></div>
+        </div>
+
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+
+        <div class="heart-float" style="top:320px;left:55px;animation-delay:0s;">✦</div>
+        <div class="heart-float" style="top:520px;right:65px;animation-delay:-1.5s;">✦</div>
+        <div class="heart-float" style="top:420px;left:85px;animation-delay:-3s;">✦</div>
+
+        <div class="header-section">
+            <h1>🌙 كل عام وأنتِ بخير يا قمري 🌙</h1>
+            <p class="subtitle">وأميرتي</p>
+        </div>
+
+        <div class="poem-section">
+            <p class="poem-text">
+<span class="highlight">أأقول أحبك يا قمري؟</span>
+آهٍ لو كان بإمكاني
+فأنا لا أملك في الدنيا
+إلا عينيك وأحزاني
+
+سفني في المرفأ باكيةٌ
+تتمزق فوق الخلجان
+ومصيري الأصفر حطمني
+حطم في صدري إيماني
+
+أأسافر دونك ليلكتي؟
+يا ظل الله بأجفاني
+يا صيفي الأخضر يا شمسي
+يا أجمل.. أجمل ألواني
+
+هل أرحل عنك وقصتنا
+أحلى من عودة نيسان؟
+أحلى من زهرة غاردينيا
+في عتمة شعرٍ إسباني
+
+يا حبي الأوحد.. لا تبكي
+فدموعك تحفر وجداني
+إني لا أملك في الدنيا
+إلا عينيك ..و أحزاني
+
+<span class="highlight">أأقول أحبك يا قمري؟</span>
+آهٍ لو كان بإمكاني
+فأنا إنسانٌ مفقودٌ
+لا أعرف في الأرض مكاني
+
+ضيعني دربي.. ضيعني
+إسمي.. ضيعني عنواني
+تاريخي! ما لي تاريخٌ
+إني نسيان النسيان
+
+إني مرساةٌ لا ترسو
+جرحٌ بملامح إنسان
+            </p>
+        </div>
+
+        <div class="audio-section">
+            <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">
+                <span id="btnIcon">▶</span>
+                <span id="btnText">تشغيل الموسيقى</span>
+            </button>
+            <audio id="bgMusic" loop>
+                <source src="https://files.catbox.moe/placeholder.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="footer-section">
+            <p>🌟 كل عام وأنتِ نجمتي الوحيدة 🌟</p>
+        </div>
+    </div>
+
+    <script>
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 70; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        let isPlaying = false;
+        const audio = document.getElementById('bgMusic');
+        const btn = document.getElementById('audioBtn');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnText = document.getElementById('btnText');
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                btn.classList.remove('playing');
+                btnIcon.textContent = '▶';
+                btnText.textContent = 'تشغيل الموسيقى';
+                isPlaying = false;
+            } else {
+                audio.play().catch(e => {
+                    btnText.textContent = 'اضغط مرة أخرى';
+                });
+                btn.classList.add('playing');
+                btnIcon.textContent = '⏸';
+                btnText.textContent = 'إيقاف الموسيقى';
+                isPlaying = true;
+            }
+        }
+
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = Math.random() * 50 + '%';
+            shootingStar.style.left = '-120px';
+            shootingStar.style.animationDuration = (Math.random() * 1 + 1) + 's';
+            document.getElementById('card').appendChild(shootingStar);
+            setTimeout(() => shootingStar.remove(), 3000);
+        }
+        setInterval(createShootingStar, 4000);
+    </script>
+</body>
+</html>
