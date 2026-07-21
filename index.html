@@ -11,7 +11,17 @@
             padding: 0;
             box-sizing: border-box;
         }
+<audio id="bgMusic" autoplay loop>
+  <source src="1000158278.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+</script>
         body {
             background: #050510;
             min-height: 100vh;
